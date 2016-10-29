@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="OK">New Game</string>
+    <string name="gameTittle">Tic Tac Toe Game</string>
+    <string name="meWinner">Congratulations! You win :)</string>
+    <string name="androidWinner">Computer wins.</string>
+    <string name="tiedGame">It is a tie. Keep playing!</string>
+    <string name="titleInstruction">Tic Tac Toe Instructions</string>
+    <string name="instructionOne">You play as the X\'s and</string>
+    <string name="instructionTwo">Computer is the O\'s.</string>
+    <string name="instructionThree">Place your X\'s on the squares by clicking them.</string>
+    <string name="instructionFour"> The first player to get three X\'s or O\'s in a row (horizontal,vertical, or diagonal) wins.</string>
+
+</resources>
