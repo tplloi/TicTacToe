@@ -4,9 +4,9 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
     defaultConfig {
-        applicationId "tictactoe.ngontinhkangkang.com.tictactoe"
-        minSdkVersion 14
-        targetSdkVersion 24
+        applicationId "com.ngontinhkangkang.tictactoe"
+        minSdkVersion 15
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,4 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-ads:9.8.0'
+    compile 'me.wangyuwei:ParticleView:1.0.3'
 }

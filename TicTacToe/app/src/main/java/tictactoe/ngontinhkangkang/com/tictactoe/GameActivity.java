@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class GameActivity extends AppCompatActivity {
     private Button[] button;
@@ -32,15 +36,23 @@ public class GameActivity extends AppCompatActivity {
     private static final String storeAndroidScore = "storeAndroidScore";
     private static final String storeMeScore = "storeMeScore";
     private static final String checkFirsTime = "checkFirstTimes";
-    private int scoreComputer, scoreMe; //Holding scores value
+    private int scoreComputer, scoreMe;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+        }
         setContentView(R.layout.activity_main);
+        adView = (AdView) this.findViewById(R.id.adView);
+        adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("33F2CB83BAADAD6C").addTestDevice("8FA8E91902B43DCB235ED2F6BBA9CAE0")
+                .addTestDevice("7DA8A5B216E868636B382A7B9756A4E6").addTestDevice("179198315EB7B069037C5BE8DEF8319A")
+                .addTestDevice("A1EC01C33BD69CD589C2AF605778C2E6").build());
         referenceToButton();
         tvScoreComputer = (TextView) findViewById(R.id.displayScoreAndroid);
         tvScoreMe = (TextView) findViewById(R.id.displayScoreMe);
@@ -67,9 +79,11 @@ public class GameActivity extends AppCompatActivity {
     private void rateApp(String packageName) {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+            //overridePendingTransition(0, 0);
         } catch (android.content.ActivityNotFoundException anfe) {
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+            //overridePendingTransition(0, 0);
         }
     }
 
@@ -84,7 +98,7 @@ public class GameActivity extends AppCompatActivity {
                 String uri = "https://play.google.com/store/apps/developer?id=" + nameOfDeveloper;
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(i);
-                showHowToPlay();
+                overridePendingTransition(0, 0);
                 break;
             case R.id.action_info:
                 showHowToPlay();
@@ -263,5 +277,18 @@ public class GameActivity extends AppCompatActivity {
         } else {
             lnAd.setVisibility(View.GONE);
         }
+        adView.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        adView.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        adView.destroy();
+        super.onDestroy();
     }
 }

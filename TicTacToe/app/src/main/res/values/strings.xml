@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Tic Tac Toe</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -14,5 +13,6 @@
     <string name="instructionTwo">Computer is the O\'s.</string>
     <string name="instructionThree">Place your X\'s on the squares by clicking them.</string>
     <string name="instructionFour"> The first player to get three X\'s or O\'s in a row (horizontal,vertical, or diagonal) wins.</string>
-
+    <string name="str_b">ca-app-pub-3165963943681013/2955208283</string>
+    <string name="str_f">ca-app-pub-3165963943681013/4431941482</string>
 </resources>
