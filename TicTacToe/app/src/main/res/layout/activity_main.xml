@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WhiteSmoke"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <LinearLayout
@@ -37,7 +37,7 @@
                     android:gravity="center"
                     android:text="Computer"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
@@ -47,7 +47,7 @@
                     android:gravity="center"
                     android:text="Me"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/DarkCyan"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -73,6 +73,7 @@
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_22"
+                    android:textStyle="bold"
                     tools:text="1" />
 
                 <TextView
@@ -84,9 +85,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/bt_primary"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/DarkCyan"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_22"
+                    android:textStyle="bold"
                     tools:text="2" />
 
             </LinearLayout>
@@ -124,6 +125,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="1" />
@@ -138,6 +140,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="2" />
@@ -152,6 +155,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="3" />
@@ -173,6 +177,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="4" />
@@ -188,6 +193,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="5" />
@@ -203,6 +209,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="6" />
@@ -224,6 +231,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="7" />
@@ -239,6 +247,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="8" />
@@ -254,6 +263,7 @@
                         android:background="@color/White"
                         android:gravity="center"
                         android:includeFontPadding="false"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="9" />

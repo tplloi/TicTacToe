@@ -64,6 +64,7 @@ public class GameActivity extends BaseFontActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setShowAdWhenExit(true);
         super.onCreate(savedInstanceState);
         adView = this.findViewById(R.id.adView);
         adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)

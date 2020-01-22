@@ -55,7 +55,6 @@ class FlashActivity : BaseFontActivity() {
         val intent = Intent(activity, GameActivity::class.java)
         startActivity(intent)
         LActivityUtil.tranIn(activity)
-        finish()
         displayInterstitial()
     }
 
