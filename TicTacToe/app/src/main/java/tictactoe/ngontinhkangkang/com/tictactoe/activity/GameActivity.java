@@ -1,4 +1,4 @@
-package tictactoe.ngontinhkangkang.com.tictactoe;
+package tictactoe.ngontinhkangkang.com.tictactoe.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +19,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.core.base.BaseFontActivity;
+import com.core.utilities.LConnectivityUtil;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-public class GameActivity extends AppCompatActivity {
+import org.jetbrains.annotations.Nullable;
+
+import tictactoe.ngontinhkangkang.com.tictactoe.GameEngine;
+import tictactoe.ngontinhkangkang.com.tictactoe.R;
+
+public class GameActivity extends BaseFontActivity {
     private Button[] button;
     private int[] enableButtons;
     private TextView tvScoreComputer, tvScoreMe;
@@ -40,14 +46,30 @@ public class GameActivity extends AppCompatActivity {
     private AdView adView;
 
     @Override
+    protected boolean setFullScreen() {
+        return false;
+    }
+
+    @Override
+    protected int setLayoutResourceId() {
+        return R.layout.activity_main;
+    }
+
+    @Nullable
+    @Override
+    protected String setTag() {
+        return getClass().getSimpleName();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
-        }
-        setContentView(R.layout.activity_main);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        //    getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+        //}
+        //setContentView(R.layout.activity_main);
         adView = (AdView) this.findViewById(R.id.adView);
         adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("33F2CB83BAADAD6C").addTestDevice("8FA8E91902B43DCB235ED2F6BBA9CAE0")
@@ -272,7 +294,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         LinearLayout lnAd = (LinearLayout) findViewById(R.id.ln_ad);
-        if (Connectivity.isConnected(GameActivity.this)) {
+        if (LConnectivityUtil.INSTANCE.isConnected(GameActivity.this)) {
             lnAd.setVisibility(View.VISIBLE);
         } else {
             lnAd.setVisibility(View.GONE);

@@ -7,7 +7,6 @@ import com.core.utilities.LActivityUtil
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_flash.*
-import tictactoe.ngontinhkangkang.com.tictactoe.GameActivity
 import tictactoe.ngontinhkangkang.com.tictactoe.R
 
 class FlashActivity : BaseFontActivity() {
