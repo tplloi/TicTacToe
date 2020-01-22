@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".FlashActivity">
+    tools:context=".activity.FlashActivity">
 
     <me.wangyuwei.particleview.ParticleView
-        android:id="@+id/particle_view"
+        android:id="@+id/particleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         pv:pv_background_color="@color/colorPrimary"
