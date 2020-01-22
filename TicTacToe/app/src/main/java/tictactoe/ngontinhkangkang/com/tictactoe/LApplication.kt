@@ -28,8 +28,8 @@ class LApplication : MultiDexApplication() {
         //config activity transition default
         ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDELEFT
 
-        //config font
-        LUIUtil.fontForAll = Constants.FONT_PATH
+        //config fonts
+        LUIUtil.fontForAll = "fonts/font.ttf"
 
         //big imageview
         BigImageViewer.initialize(GlideImageLoader.with(applicationContext))
