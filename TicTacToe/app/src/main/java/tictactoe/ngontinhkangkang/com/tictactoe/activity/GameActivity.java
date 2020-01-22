@@ -2,19 +2,14 @@ package tictactoe.ngontinhkangkang.com.tictactoe.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -264,7 +259,7 @@ public class GameActivity extends BaseFontActivity {
     protected void onResume() {
         super.onResume();
         LinearLayout lnAd = findViewById(R.id.ln_ad);
-        if (LConnectivityUtil.INSTANCE.isConnected(GameActivity.this)) {
+        if (LConnectivityUtil.INSTANCE.isConnected(activity)) {
             lnAd.setVisibility(View.VISIBLE);
         } else {
             lnAd.setVisibility(View.GONE);
