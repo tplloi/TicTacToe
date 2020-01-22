@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tic Tac Toe</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="OK">New Game</string>
     <string name="gameTittle">Tic Tac Toe Game</string>
     <string name="meWinner">Congratulations! You win :)</string>

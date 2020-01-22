@@ -15,7 +15,6 @@
         android:padding="5dp">
 
         <GridLayout
-            android:id="@+id/gridLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -32,7 +31,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/scoreAndroid"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -43,7 +41,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/scoreMe"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -253,7 +250,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
