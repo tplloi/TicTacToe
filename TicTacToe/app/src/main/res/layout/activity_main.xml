@@ -1,18 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/WhiteSmoke"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/ln_ad"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:columnCount="2"
             android:orientation="horizontal"
-            android:useDefaultMargins="false">
+            android:useDefaultMargins="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                     android:gravity="center"
                     android:text="Computer"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/DarkOrange"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,7 +58,9 @@
                 android:layout_column="1"
                 android:layout_gravity="fill_horizontal"
                 android:gravity="fill_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/padding_45"
+                android:paddingEnd="@dimen/padding_45">
 
                 <TextView
                     android:id="@+id/displayScoreAndroid"
@@ -67,178 +69,197 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="3dp"
                     android:layout_weight="1"
-                    android:background="@color/DarkOrange"
+                    android:background="@drawable/bt_primary"
                     android:gravity="center"
-                    android:text=""
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/txt_22"
+                    tools:text="1" />
 
                 <TextView
                     android:id="@+id/displayScoreMe"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="3dp"
+                    android:layout_marginLeft="@dimen/margin_15"
                     android:layout_weight="1"
-                    android:background="@color/DarkCyan"
+                    android:background="@drawable/bt_primary"
                     android:gravity="center"
-                    android:text=""
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/DarkCyan"
+                    android:textSize="@dimen/txt_22"
+                    tools:text="2" />
 
             </LinearLayout>
 
         </GridLayout>
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_5"
             android:layout_weight="5"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/background_padding">
+            ads:cardBackgroundColor="@color/WhiteSmoke"
+            app:cardCornerRadius="@dimen/round_25"
+            app:cardElevation="@dimen/w_3"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/entry1"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/entry2"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry1"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="1" />
 
-                <Button
-                    android:id="@+id/entry3"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry2"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="2" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry3"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry4"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="4" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry5"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="5" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry6"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="6" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry7"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="7" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry8"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="8" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/entry9"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_weight="1"
+                        android:background="@color/White"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold"
+                        tools:text="9" />
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/entry4"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/entry5"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/separation_top_left_margin"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/entry6"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/separation_top_left_margin"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/entry7"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/entry8"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/separation_top_left_margin"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/entry9"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/separation_top_left_margin"
-                    android:layout_marginTop="@dimen/separation_top_left_margin"
-                    android:layout_weight="1"
-                    android:background="@color/White"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textSize="@dimen/text_size"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -249,15 +270,17 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@color/DarkGreen"
+                android:background="@drawable/bt_primary"
                 android:onClick="newGame"
                 android:padding="4dp"
+                android:paddingStart="@dimen/padding_45"
+                android:paddingEnd="@dimen/padding_45"
                 android:text="RESTART"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/White"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_22"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -266,9 +289,8 @@
     <LinearLayout
         android:id="@+id/ln_ad"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/transparent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -276,7 +298,7 @@
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
+            ads:adSize="SMART_BANNER"
             ads:adUnitId="@string/str_b" />
     </LinearLayout>
 </RelativeLayout>

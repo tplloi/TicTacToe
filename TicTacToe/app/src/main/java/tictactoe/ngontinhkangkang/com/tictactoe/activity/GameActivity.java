@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
+import com.core.utilities.LSocialUtil;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -64,20 +65,14 @@ public class GameActivity extends BaseFontActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        //    getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
-        //}
-        //setContentView(R.layout.activity_main);
-        adView = (AdView) this.findViewById(R.id.adView);
+        adView = this.findViewById(R.id.adView);
         adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("33F2CB83BAADAD6C").addTestDevice("8FA8E91902B43DCB235ED2F6BBA9CAE0")
                 .addTestDevice("7DA8A5B216E868636B382A7B9756A4E6").addTestDevice("179198315EB7B069037C5BE8DEF8319A")
                 .addTestDevice("A1EC01C33BD69CD589C2AF605778C2E6").build());
         referenceToButton();
-        tvScoreComputer = (TextView) findViewById(R.id.displayScoreAndroid);
-        tvScoreMe = (TextView) findViewById(R.id.displayScoreMe);
+        tvScoreComputer = findViewById(R.id.displayScoreAndroid);
+        tvScoreMe = findViewById(R.id.displayScoreMe);
         game = new GameEngine(numberOfButton);
         handler = new Handler();
         checkRunnableAdded = false;
@@ -91,36 +86,20 @@ public class GameActivity extends BaseFontActivity {
         startNewGame();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    private void rateApp(String packageName) {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-            //overridePendingTransition(0, 0);
-        } catch (android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
-            //overridePendingTransition(0, 0);
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.rate_app:
-                rateApp(getPackageName());
+                LSocialUtil.INSTANCE.rateApp(activity, getPackageName());
                 break;
             case R.id.more_app:
-                String nameOfDeveloper = "NgonTinh KangKang";
-                String uri = "https://play.google.com/store/apps/developer?id=" + nameOfDeveloper;
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(i);
-                overridePendingTransition(0, 0);
+                LSocialUtil.INSTANCE.moreApp(activity);
                 break;
             case R.id.action_info:
                 showHowToPlay();
@@ -143,17 +122,17 @@ public class GameActivity extends BaseFontActivity {
     private void referenceToButton() {
         button = new Button[numberOfButton];
         //First Row
-        button[0] = (Button) findViewById(R.id.entry1);
-        button[1] = (Button) findViewById(R.id.entry2);
-        button[2] = (Button) findViewById(R.id.entry3);
+        button[0] = findViewById(R.id.entry1);
+        button[1] = findViewById(R.id.entry2);
+        button[2] = findViewById(R.id.entry3);
         //Second Row
-        button[3] = (Button) findViewById(R.id.entry4);
-        button[4] = (Button) findViewById(R.id.entry5);
-        button[5] = (Button) findViewById(R.id.entry6);
+        button[3] = findViewById(R.id.entry4);
+        button[4] = findViewById(R.id.entry5);
+        button[5] = findViewById(R.id.entry6);
         //Third Row
-        button[6] = (Button) findViewById(R.id.entry7);
-        button[7] = (Button) findViewById(R.id.entry8);
-        button[8] = (Button) findViewById(R.id.entry9);
+        button[6] = findViewById(R.id.entry7);
+        button[7] = findViewById(R.id.entry8);
+        button[8] = findViewById(R.id.entry9);
     }
 
     private void displayScore() {
@@ -176,7 +155,7 @@ public class GameActivity extends BaseFontActivity {
     private class EntryButtonListener implements View.OnClickListener {
         int mePosition;
 
-        public EntryButtonListener(int mePosition) {
+        EntryButtonListener(int mePosition) {
             this.mePosition = mePosition;
         }
 
@@ -245,12 +224,7 @@ public class GameActivity extends BaseFontActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
         builder.setTitle(getResources().getString(R.string.gameTittle));
         builder.setMessage(getResources().getString(messageId));
-        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startNewGame();
-            }
-        });
+        builder.setPositiveButton(R.string.OK, (dialog, which) -> startNewGame());
         AlertDialog winnerNotify = builder.create();
         winnerNotify.show();
     }
@@ -262,12 +236,7 @@ public class GameActivity extends BaseFontActivity {
         dialog.setContentView(R.layout.pop_window_instruction);
         dialog.setCanceledOnTouchOutside(true);
         View masterView = dialog.findViewById(R.id.popWindow);
-        masterView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        masterView.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
 
     }
@@ -293,7 +262,7 @@ public class GameActivity extends BaseFontActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LinearLayout lnAd = (LinearLayout) findViewById(R.id.ln_ad);
+        LinearLayout lnAd = findViewById(R.id.ln_ad);
         if (LConnectivityUtil.INSTANCE.isConnected(GameActivity.this)) {
             lnAd.setVisibility(View.VISIBLE);
         } else {
