@@ -6,6 +6,18 @@
     android:background="@color/colorPrimary"
     tools:context=".activity.FlashActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/iv"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Tic Tac Toe\nSuper Hard"
+        android:textColor="@color/White"
+        android:textSize="@dimen/txt_35"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="@dimen/w_120"
@@ -30,6 +42,32 @@
             android:paddingStart="@dimen/padding_45"
             android:paddingEnd="@dimen/padding_45"
             android:text="New Game"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_18"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@drawable/bt_primary"
+            android:paddingStart="@dimen/padding_45"
+            android:paddingEnd="@dimen/padding_45"
+            android:text="Rate"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_18"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@drawable/bt_primary"
+            android:paddingStart="@dimen/padding_45"
+            android:paddingEnd="@dimen/padding_45"
+            android:text="More Games"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_18"
             android:textStyle="bold" />

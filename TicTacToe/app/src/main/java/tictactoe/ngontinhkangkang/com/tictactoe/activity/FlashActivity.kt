@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.core.base.BaseFontActivity
 import com.core.utilities.LActivityUtil
+import com.core.utilities.LSocialUtil
 import com.core.utilities.LUIUtil
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
@@ -37,9 +38,17 @@ class FlashActivity : BaseFontActivity() {
                 .build()
         interstitial?.loadAd(adRequest)
 
-        /*LUIUtil.setDelay(1000, Runnable {
+        btPlay.setOnClickListener {
             moveToMainActivity()
-        })*/
+        }
+
+        btRate.setOnClickListener {
+            LSocialUtil.rateApp(activity, packageName)
+        }
+
+        btMore.setOnClickListener {
+            LSocialUtil.moreApp(activity)
+        }
     }
 
     private fun moveToMainActivity() {
