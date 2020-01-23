@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.core.base.BaseFontActivity
 import com.core.utilities.LActivityUtil
 import com.core.utilities.LSocialUtil
-import com.core.utilities.LUIUtil
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_flash.*

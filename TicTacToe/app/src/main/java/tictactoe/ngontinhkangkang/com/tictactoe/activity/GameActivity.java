@@ -16,7 +16,9 @@ import android.widget.TextView;
 
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
+import com.core.utilities.LLog;
 import com.core.utilities.LSocialUtil;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -66,6 +68,34 @@ public class GameActivity extends BaseFontActivity {
                 .addTestDevice("33F2CB83BAADAD6C").addTestDevice("8FA8E91902B43DCB235ED2F6BBA9CAE0")
                 .addTestDevice("7DA8A5B216E868636B382A7B9756A4E6").addTestDevice("179198315EB7B069037C5BE8DEF8319A")
                 .addTestDevice("A1EC01C33BD69CD589C2AF605778C2E6").build());
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                LLog.d(TAG, "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                LLog.d(TAG, "onAdFailedToLoad errorCode " + errorCode);
+            }
+
+            @Override
+            public void onAdOpened() {
+                LLog.d(TAG, "onAdOpened");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                LLog.d(TAG, "onAdLeftApplication");
+            }
+
+            @Override
+            public void onAdClosed() {
+                LLog.d(TAG, "onAdClosed");
+            }
+        });
+
+
         referenceToButton();
         tvScoreComputer = findViewById(R.id.displayScoreAndroid);
         tvScoreMe = findViewById(R.id.displayScoreMe);
