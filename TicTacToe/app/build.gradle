@@ -24,9 +24,26 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            storeFile file("keytictactoe.jks")
+            storePassword "04021993"
+            keyAlias "loi"
+            keyPassword "04021993"
+        }
+    }
+
     buildTypes {
         release {
+            debuggable false
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
             minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
