@@ -1,28 +1,24 @@
-package tictactoe.ngontinhkangkang.com.tictactoe.activity
+package tictactoe.activity
 
 import android.content.Intent
 import android.os.Bundle
+import com.annotation.IsFullScreen
+import com.annotation.LogTag
 import com.core.base.BaseFontActivity
 import com.core.utilities.LActivityUtil
 import com.core.utilities.LSocialUtil
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_flash.*
-import tictactoe.ngontinhkangkang.com.tictactoe.R
+import tictactoe.R
 
+@LogTag("FlashActivity")
+@IsFullScreen(false)
 class FlashActivity : BaseFontActivity() {
     private var interstitial: InterstitialAd? = null
 
-    override fun setFullScreen(): Boolean {
-        return false
-    }
-
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_flash
-    }
-
-    override fun setTag(): String? {
-        return javaClass.simpleName
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,18 +38,18 @@ class FlashActivity : BaseFontActivity() {
         }
 
         btRate.setOnClickListener {
-            LSocialUtil.rateApp(activity, packageName)
+            LSocialUtil.rateApp(this, packageName)
         }
 
         btMore.setOnClickListener {
-            LSocialUtil.moreApp(activity)
+            LSocialUtil.moreApp(this)
         }
     }
 
     private fun moveToMainActivity() {
-        val intent = Intent(activity, GameActivity::class.java)
+        val intent = Intent(this, GameActivity::class.java)
         startActivity(intent)
-        LActivityUtil.tranIn(activity)
+        LActivityUtil.tranIn(this)
         displayInterstitial()
     }
 

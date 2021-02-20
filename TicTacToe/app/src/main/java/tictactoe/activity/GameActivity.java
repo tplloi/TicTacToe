@@ -1,4 +1,4 @@
-package tictactoe.ngontinhkangkang.com.tictactoe.activity;
+package tictactoe.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.annotation.IsFullScreen;
+import com.annotation.IsShowAdWhenExit;
+import com.annotation.LogTag;
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
 import com.core.utilities.LLog;
@@ -22,11 +25,12 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import org.jetbrains.annotations.Nullable;
+import tictactoe.R;
+import tictactoe.engine.GameEngine;
 
-import tictactoe.ngontinhkangkang.com.tictactoe.GameEngine;
-import tictactoe.ngontinhkangkang.com.tictactoe.R;
-
+@LogTag("GameActivity")
+@IsFullScreen(false)
+@IsShowAdWhenExit(true)
 public class GameActivity extends BaseFontActivity {
     private Button[] button;
     private int[] enableButtons;
@@ -44,24 +48,12 @@ public class GameActivity extends BaseFontActivity {
     private AdView adView;
 
     @Override
-    protected boolean setFullScreen() {
-        return false;
-    }
-
-    @Override
     protected int setLayoutResourceId() {
         return R.layout.activity_main;
     }
 
-    @Nullable
-    @Override
-    protected String setTag() {
-        return getClass().getSimpleName();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setShowAdWhenExit(true);
         super.onCreate(savedInstanceState);
         adView = this.findViewById(R.id.adView);
         adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -71,27 +63,27 @@ public class GameActivity extends BaseFontActivity {
         adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-                LLog.d(TAG, "onAdLoaded");
+                logD("onAdLoaded");
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                LLog.d(TAG, "onAdFailedToLoad errorCode " + errorCode);
+                logD("onAdFailedToLoad errorCode " + errorCode);
             }
 
             @Override
             public void onAdOpened() {
-                LLog.d(TAG, "onAdOpened");
+                logD("onAdOpened");
             }
 
             @Override
             public void onAdLeftApplication() {
-                LLog.d(TAG, "onAdLeftApplication");
+                logD("onAdLeftApplication");
             }
 
             @Override
             public void onAdClosed() {
-                LLog.d(TAG, "onAdClosed");
+                logD("onAdClosed");
             }
         });
 
@@ -122,10 +114,10 @@ public class GameActivity extends BaseFontActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.rate_app:
-                LSocialUtil.INSTANCE.rateApp(activity, getPackageName());
+                LSocialUtil.Companion.rateApp(this, getPackageName());
                 break;
             case R.id.more_app:
-                LSocialUtil.INSTANCE.moreApp(activity);
+                LSocialUtil.Companion.moreApp(this, "Toi Yeu Viet Nam");
                 break;
             case R.id.action_info:
                 showHowToPlay();
@@ -188,7 +180,7 @@ public class GameActivity extends BaseFontActivity {
         @Override
         public void onClick(View v) {
             button[mePosition].setText("x");
-            button[mePosition].setTextColor(getResources().getColor(R.color.Black));
+            button[mePosition].setTextColor(getResources().getColor(R.color.black));
             game.storePlayerMove(mePosition, game.mePlayer());
             button[mePosition].setEnabled(false);
             disableButtons();
@@ -204,7 +196,7 @@ public class GameActivity extends BaseFontActivity {
             if (checkWinner == game.noWinnerYet()) {
                 int androidPosition = game.findComputerMove();
                 button[androidPosition].setText("o");
-                button[androidPosition].setTextColor(getResources().getColor(R.color.Black));
+                button[androidPosition].setTextColor(getResources().getColor(R.color.black));
                 checkWinner = game.checkWinner();
             }
 
@@ -289,7 +281,7 @@ public class GameActivity extends BaseFontActivity {
     protected void onResume() {
         super.onResume();
         LinearLayout lnAd = findViewById(R.id.ln_ad);
-        if (LConnectivityUtil.INSTANCE.isConnected(activity)) {
+        if (LConnectivityUtil.Companion.isConnected()) {
             lnAd.setVisibility(View.VISIBLE);
         } else {
             lnAd.setVisibility(View.GONE);

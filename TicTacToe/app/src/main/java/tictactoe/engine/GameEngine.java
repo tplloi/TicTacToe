@@ -1,4 +1,4 @@
-package tictactoe.ngontinhkangkang.com.tictactoe;
+package tictactoe.engine;
 
 import java.util.Random;
 

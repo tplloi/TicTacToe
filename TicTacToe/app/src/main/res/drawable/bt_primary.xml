@@ -10,8 +10,8 @@
     </item>
     <item>
         <shape>
-            <gradient android:angle="270" android:endColor="@color/White" android:startColor="@color/White" />
-            <stroke android:width="@dimen/w_1" android:color="@color/White" />
+            <gradient android:angle="270" android:endColor="@color/white" android:startColor="@color/white" />
+            <stroke android:width="@dimen/w_1" android:color="@color/white" />
             <corners android:radius="@dimen/round_90" />
         </shape>
     </item>
