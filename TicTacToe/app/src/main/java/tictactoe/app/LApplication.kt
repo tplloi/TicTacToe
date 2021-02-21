@@ -7,7 +7,6 @@ import com.data.ActivityData
 import com.data.AdmobData
 import tictactoe.R
 
-//TODO setting darkmode
 //TODO mat toolbar
 class LApplication : BaseApplication() {
 
@@ -23,5 +22,7 @@ class LApplication : BaseApplication() {
         //config fonts
         LUIUtil.fontForAll = "fonts/font.ttf"
 
+        val isDarkTheme = LUIUtil.isDarkTheme()
+        LUIUtil.setDarkTheme(isDarkTheme = isDarkTheme)
     }
 }

@@ -1,6 +1,5 @@
 package tictactoe.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
@@ -19,11 +18,13 @@ import com.annotation.IsShowAdWhenExit;
 import com.annotation.LogTag;
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
+import com.core.utilities.LDialogUtil;
 import com.core.utilities.LSocialUtil;
 import com.core.utilities.LUIUtil;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
 
+import kotlin.Unit;
 import tictactoe.R;
 import tictactoe.engine.GameEngine;
 
@@ -172,7 +173,7 @@ public class GameActivity extends BaseFontActivity {
         @Override
         public void onClick(View v) {
             button[mePosition].setText("x");
-            button[mePosition].setTextColor(getResources().getColor(R.color.black));
+//            button[mePosition].setTextColor(getResources().getColor(R.color.black));
             gameEngine.storePlayerMove(mePosition, gameEngine.mePlayer());
             button[mePosition].setEnabled(false);
             disableButtons();
@@ -188,7 +189,7 @@ public class GameActivity extends BaseFontActivity {
             if (checkWinner == gameEngine.noWinnerYet()) {
                 int androidPosition = gameEngine.findComputerMove();
                 button[androidPosition].setText("o");
-                button[androidPosition].setTextColor(getResources().getColor(R.color.black));
+//                button[androidPosition].setTextColor(getResources().getColor(R.color.black));
                 checkWinner = gameEngine.checkWinner();
             }
 
@@ -231,12 +232,16 @@ public class GameActivity extends BaseFontActivity {
     }
 
     private void showGameOverDialog(final int messageId) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-        builder.setTitle(getResources().getString(R.string.gameTittle));
-        builder.setMessage(getResources().getString(messageId));
-        builder.setPositiveButton(R.string.OK, (dialog, which) -> startNewGame());
-        AlertDialog winnerNotify = builder.create();
-        winnerNotify.show();
+        LDialogUtil.Companion.showDialog1(
+                this,
+                getString(R.string.gameTittle),
+                getResources().getString(messageId),
+                getString(R.string.confirm),
+                unit -> {
+                    startNewGame();
+                    return Unit.INSTANCE;
+                }
+        );
     }
 
     private void showHowToPlay() {

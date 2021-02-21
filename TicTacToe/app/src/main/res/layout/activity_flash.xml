@@ -46,6 +46,20 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btChangeTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/bt_primary"
+            android:paddingStart="@dimen/padding_45"
+            android:paddingEnd="@dimen/padding_45"
+            android:text="@string/change_theme"
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextColor"
+            android:textSize="@dimen/txt_large"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

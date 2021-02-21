@@ -42,6 +42,14 @@ class FlashActivity : BaseFontActivity() {
             moveToMainActivity()
         }
 
+        btChangeTheme.setSafeOnClickListener {
+            val isDarkTheme = LUIUtil.isDarkTheme()
+            LUIUtil.setDarkTheme(isDarkTheme = !isDarkTheme)
+            finish()
+            startActivity(Intent(this, FlashActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+
         btRate.setSafeOnClickListener {
             LSocialUtil.rateApp(activity = this, packageName = packageName)
         }
