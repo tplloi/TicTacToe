@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">Tic Tac Toe</string>
 
-<!--    TODO-->
-    <string name="str_b">a</string>
-    <string name="str_f">a</string>
+<!--    https://apps.admob.com/v2/apps/1665875622/overview-->
+    <string name="str_b">ca-app-pub-3165963943681013/9161222265</string>
+    <string name="str_f">ca-app-pub-3165963943681013/2607777428</string>
 
     <string name="OK">New Game</string>
     <string name="gameTittle">Tic Tac Toe Game</string>
