@@ -27,7 +27,7 @@ import com.google.android.gms.ads.AdView;
 import tictactoe.R;
 import tictactoe.engine.GameEngine;
 
-@LogTag("loitppGameActivity")
+@LogTag("GameActivity")
 @IsFullScreen(false)
 @IsShowAdWhenExit(true)
 public class GameActivity extends BaseFontActivity {

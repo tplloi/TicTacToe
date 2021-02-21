@@ -13,7 +13,7 @@ import com.views.setSafeOnClickListener
 import kotlinx.android.synthetic.main.activity_flash.*
 import tictactoe.R
 
-@LogTag("loitppFlashActivity")
+@LogTag("FlashActivity")
 @IsFullScreen(false)
 class FlashActivity : BaseFontActivity() {
     private var interstitialAd: InterstitialAd? = null
