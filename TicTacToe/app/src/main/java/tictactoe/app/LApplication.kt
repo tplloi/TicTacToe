@@ -7,7 +7,6 @@ import com.data.ActivityData
 import com.data.AdmobData
 import tictactoe.R
 
-//TODO mat toolbar
 class LApplication : BaseApplication() {
 
     override fun onCreate() {

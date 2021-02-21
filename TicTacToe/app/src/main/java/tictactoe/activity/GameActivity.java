@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.annotation.IsFullScreen;
 import com.annotation.IsShowAdWhenExit;
 import com.annotation.LogTag;
@@ -59,8 +61,11 @@ public class GameActivity extends BaseFontActivity {
     }
 
     protected void setupViews() {
-        adView = LUIUtil.Companion.createAdBanner(adView = this.findViewById(R.id.adView));
+        Toolbar toolbar = this.findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
+        adView = LUIUtil.Companion.createAdBanner(adView = this.findViewById(R.id.adView));
         adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
