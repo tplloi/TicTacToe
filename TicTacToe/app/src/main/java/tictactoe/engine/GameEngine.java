@@ -3,11 +3,11 @@ package tictactoe.engine;
 import java.util.Random;
 
 public class GameEngine {
-    private int BOARD_SIZE;
-    private int[] entryBoard;
-    private Random randomAndroidPosition;
+    private final int BOARD_SIZE;
+    private final int[] entryBoard;
+    private final Random randomAndroidPosition;
     //Reset all entry
-    private final static int RESET_EMTY = 0;
+    private final static int RESET_EMPTY = 0;
     //Players
     private final static int ME_PLAYER = 1;
     private final static int COMPUTER_PLAYER = 2;
@@ -28,13 +28,13 @@ public class GameEngine {
     //Clear all value in Array
     public void clearBoard() {
         for (int k = 0; k < BOARD_SIZE; k++) {
-            entryBoard[k] = RESET_EMTY;
+            entryBoard[k] = RESET_EMPTY;
         }
     }
 
     //Store players move
     public void storePlayerMove(int playerPosition, int whoIsPlayer) {
-        //WhoisPlayer:
+        //Who is Player:
         //ME_PLAYER=1
         //COMPUTER_PLAYER=2
         entryBoard[playerPosition] = whoIsPlayer;
@@ -58,7 +58,7 @@ public class GameEngine {
                     return k;
                 } else {
                     //Set entry back to empty
-                    entryBoard[k] = RESET_EMTY;
+                    entryBoard[k] = RESET_EMPTY;
                 }
             }
         }
@@ -74,7 +74,7 @@ public class GameEngine {
                     return k;
                 } else {
                     //Set entry back to empty
-                    entryBoard[k] = RESET_EMTY;
+                    entryBoard[k] = RESET_EMPTY;
                 }
             }
         }
@@ -144,7 +144,7 @@ public class GameEngine {
     }
 
     public int emptyBoard() {
-        return RESET_EMTY;
+        return RESET_EMPTY;
     }
 
     public int mePlayer() {

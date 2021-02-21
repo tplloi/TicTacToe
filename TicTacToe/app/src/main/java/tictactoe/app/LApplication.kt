@@ -8,7 +8,6 @@ import com.data.AdmobData
 import tictactoe.R
 
 //TODO setting darkmode
-//TODO theme
 //TODO admod
 //TODO mat toolbar
 class LApplication : BaseApplication() {
