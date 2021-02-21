@@ -19,7 +19,6 @@ import com.annotation.IsShowAdWhenExit;
 import com.annotation.LogTag;
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
-import com.core.utilities.LLog;
 import com.core.utilities.LSocialUtil;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -89,7 +88,7 @@ public class GameActivity extends BaseFontActivity {
 
 
         referenceToButton();
-        tvScoreComputer = findViewById(R.id.displayScoreAndroid);
+        tvScoreComputer = findViewById(R.id.tvDisplayScoreAndroid);
         tvScoreMe = findViewById(R.id.displayScoreMe);
         game = new GameEngine(numberOfButton);
         handler = new Handler();
@@ -140,17 +139,17 @@ public class GameActivity extends BaseFontActivity {
     private void referenceToButton() {
         button = new Button[numberOfButton];
         //First Row
-        button[0] = findViewById(R.id.entry1);
-        button[1] = findViewById(R.id.entry2);
-        button[2] = findViewById(R.id.entry3);
+        button[0] = findViewById(R.id.btEntry1);
+        button[1] = findViewById(R.id.btEntry2);
+        button[2] = findViewById(R.id.btEntry3);
         //Second Row
-        button[3] = findViewById(R.id.entry4);
-        button[4] = findViewById(R.id.entry5);
-        button[5] = findViewById(R.id.entry6);
+        button[3] = findViewById(R.id.btEntry4);
+        button[4] = findViewById(R.id.btEntry5);
+        button[5] = findViewById(R.id.btEntry6);
         //Third Row
-        button[6] = findViewById(R.id.entry7);
-        button[7] = findViewById(R.id.entry8);
-        button[8] = findViewById(R.id.entry9);
+        button[6] = findViewById(R.id.btEntry7);
+        button[7] = findViewById(R.id.btEntry8);
+        button[8] = findViewById(R.id.btEntry9);
     }
 
     private void displayScore() {
@@ -251,7 +250,7 @@ public class GameActivity extends BaseFontActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.pop_window_instruction);
+        dialog.setContentView(R.layout.dialog_instruction);
         dialog.setCanceledOnTouchOutside(true);
         View masterView = dialog.findViewById(R.id.popWindow);
         masterView.setOnClickListener(view -> dialog.dismiss());
@@ -280,7 +279,7 @@ public class GameActivity extends BaseFontActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LinearLayout lnAd = findViewById(R.id.ln_ad);
+        LinearLayout lnAd = findViewById(R.id.lnAd);
         if (LConnectivityUtil.Companion.isConnected()) {
             lnAd.setVisibility(View.VISIBLE);
         } else {

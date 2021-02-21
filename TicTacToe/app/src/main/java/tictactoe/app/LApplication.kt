@@ -10,6 +10,7 @@ import tictactoe.R
 //TODO setting darkmode
 //TODO theme
 //TODO admod
+//TODO mat toolbar
 class LApplication : BaseApplication() {
 
     override fun onCreate() {

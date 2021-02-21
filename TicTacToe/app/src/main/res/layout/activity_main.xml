@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:background="?attr/themeBackgroundColor">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/ln_ad"
+        android:layout_above="@+id/lnAd"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
@@ -28,26 +27,28 @@
                 android:layout_column="1"
                 android:layout_gravity="fill_horizontal"
                 android:gravity="fill_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/padding_medium"
+                android:paddingEnd="@dimen/padding_medium">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Computer"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
+                    android:gravity="start"
+                    android:text="@string/computer"
+                    android:textColor="?attr/themeTextColor"
+                    android:textSize="@dimen/txt_medium"
                     android:textStyle="bold" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Me"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
+                    android:gravity="end"
+                    android:text="@string/me"
+                    android:textColor="?attr/themeTextColor"
+                    android:textSize="@dimen/txt_medium"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -59,33 +60,39 @@
                 android:layout_gravity="fill_horizontal"
                 android:gravity="fill_horizontal"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/padding_45"
-                android:paddingEnd="@dimen/padding_45">
+                android:paddingStart="@dimen/padding_medium"
+                android:paddingEnd="@dimen/padding_medium">
 
-                <TextView
-                    android:id="@+id/displayScoreAndroid"
-                    android:layout_width="0dp"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDisplayScoreAndroid"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="3dp"
-                    android:layout_weight="1"
                     android:background="@drawable/bt_primary"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimary"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/padding_medium"
+                    android:paddingEnd="@dimen/padding_medium"
+                    android:textColor="?attr/themeTextColor"
                     android:textSize="@dimen/txt_22"
                     android:textStyle="bold"
                     tools:text="1" />
 
-                <TextView
-                    android:id="@+id/displayScoreMe"
+                <View
                     android:layout_width="0dp"
+                    android:layout_height="@dimen/w_1"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/displayScoreMe"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/margin_medium"
                     android:background="@drawable/bt_primary"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimary"
+                    android:gravity="end"
+                    android:paddingStart="@dimen/padding_medium"
+                    android:paddingEnd="@dimen/padding_medium"
+                    android:textColor="?attr/themeTextColor"
                     android:textSize="@dimen/txt_22"
                     android:textStyle="bold"
                     tools:text="2" />
@@ -97,18 +104,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/margin_5"
+            android:layout_margin="@dimen/margin_medium"
             android:layout_weight="5"
-            ads:cardBackgroundColor="@color/whiteSmoke"
-            app:cardCornerRadius="@dimen/round_25"
+            app:cardCornerRadius="@dimen/round_medium"
             app:cardElevation="@dimen/w_3"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="?attr/themeTextColor"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,45 +125,45 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry1"
+                        android:id="@+id/btEntry1"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="1" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry2"
+                        android:id="@+id/btEntry2"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="2" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry3"
+                        android:id="@+id/btEntry3"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="3" />
@@ -168,48 +176,48 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry4"
+                        android:id="@+id/btEntry4"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="4" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry5"
+                        android:id="@+id/btEntry5"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/separation_top_left_margin"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginStart="@dimen/w_2"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="5" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry6"
+                        android:id="@+id/btEntry6"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/separation_top_left_margin"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginStart="@dimen/w_2"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="6" />
@@ -222,48 +230,48 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry7"
+                        android:id="@+id/btEntry7"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="7" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry8"
+                        android:id="@+id/btEntry8"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/separation_top_left_margin"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginStart="@dimen/w_2"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="8" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/entry9"
+                        android:id="@+id/btEntry9"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/separation_top_left_margin"
-                        android:layout_marginTop="@dimen/separation_top_left_margin"
+                        android:layout_marginStart="@dimen/w_2"
+                        android:layout_marginTop="@dimen/w_2"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="?attr/themeBackgroundColorMedium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="?attr/themeTextColor"
                         android:textSize="@dimen/text_size"
                         android:textStyle="bold"
                         tools:text="9" />
@@ -279,17 +287,18 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/margin_small"
                 android:background="@drawable/bt_primary"
                 android:onClick="newGame"
                 android:padding="4dp"
                 android:paddingStart="@dimen/padding_45"
                 android:paddingEnd="@dimen/padding_45"
-                android:text="RESTART"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/restart"
+                android:textAllCaps="false"
+                android:textColor="?attr/themeTextColor"
                 android:textSize="@dimen/txt_22"
                 android:textStyle="bold" />
 
@@ -297,7 +306,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ln_ad"
+        android:id="@+id/lnAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
