@@ -56,5 +56,5 @@ android {
 }
 
 dependencies {
-    api 'com.github.tplloi:basemaster:4.4.48'
+    api 'com.github.tplloi:basemaster:4.4.49'
 }

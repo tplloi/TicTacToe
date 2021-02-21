@@ -20,24 +20,23 @@ import com.annotation.LogTag;
 import com.core.base.BaseFontActivity;
 import com.core.utilities.LConnectivityUtil;
 import com.core.utilities.LSocialUtil;
+import com.core.utilities.LUIUtil;
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import tictactoe.R;
 import tictactoe.engine.GameEngine;
 
-@LogTag("GameActivity")
+@LogTag("loitppGameActivity")
 @IsFullScreen(false)
 @IsShowAdWhenExit(true)
 public class GameActivity extends BaseFontActivity {
     private Button[] button;
-    private int[] enableButtons;
-    private TextView tvScoreComputer, tvScoreMe;
-    private GameEngine game;
+    private TextView tvDisplayScoreAndroid, tvDisplayScoreMe;
+    private GameEngine gameEngine;
     private final static int numberOfButton = 9;//The number of buttons on screen
     private final static int addAPoint = 1;
-    private Handler handler;
+    private Handler mHandler;
     private boolean checkRunnableAdded;
     private SharedPreferences saveGameScore;
     private static final String storeAndroidScore = "storeAndroidScore";
@@ -54,11 +53,13 @@ public class GameActivity extends BaseFontActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adView = this.findViewById(R.id.adView);
-        adView.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("33F2CB83BAADAD6C").addTestDevice("8FA8E91902B43DCB235ED2F6BBA9CAE0")
-                .addTestDevice("7DA8A5B216E868636B382A7B9756A4E6").addTestDevice("179198315EB7B069037C5BE8DEF8319A")
-                .addTestDevice("A1EC01C33BD69CD589C2AF605778C2E6").build());
+
+        setupViews();
+    }
+
+    protected void setupViews() {
+        adView = LUIUtil.Companion.createAdBanner(adView = this.findViewById(R.id.adView));
+
         adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -88,10 +89,10 @@ public class GameActivity extends BaseFontActivity {
 
 
         referenceToButton();
-        tvScoreComputer = findViewById(R.id.tvDisplayScoreAndroid);
-        tvScoreMe = findViewById(R.id.displayScoreMe);
-        game = new GameEngine(numberOfButton);
-        handler = new Handler();
+        tvDisplayScoreAndroid = findViewById(R.id.tvDisplayScoreAndroid);
+        tvDisplayScoreMe = findViewById(R.id.tvDisplayScoreMe);
+        gameEngine = new GameEngine(numberOfButton);
+        mHandler = new Handler();
         checkRunnableAdded = false;
         saveGameScore = getSharedPreferences(storeAndroidScore, 0);
         scoreComputer = saveGameScore.getInt(storeAndroidScore, 0);
@@ -111,27 +112,19 @@ public class GameActivity extends BaseFontActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.rate_app:
-                LSocialUtil.Companion.rateApp(this, getPackageName());
-                break;
-            case R.id.more_app:
-                LSocialUtil.Companion.moreApp(this, "Toi Yeu Viet Nam");
-                break;
-            case R.id.action_info:
-                showHowToPlay();
-                break;
-            case R.id.action_reset:
-                scoreComputer = 0;
-                scoreMe = 0;
-                displayScore();
-                storeWinnerScore(storeAndroidScore, scoreComputer);
-                storeWinnerScore(storeMeScore, scoreMe);
-                startNewGame();
-                break;
-            default:
-                break;
-            //return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.rate_app) {
+            LSocialUtil.Companion.rateApp(this, getPackageName());
+        } else if (item.getItemId() == R.id.more_app) {
+            LSocialUtil.Companion.moreApp(this, "Toi Yeu Viet Nam");
+        } else if (item.getItemId() == R.id.action_info) {
+            showHowToPlay();
+        } else if (item.getItemId() == R.id.action_reset) {
+            scoreComputer = 0;
+            scoreMe = 0;
+            displayScore();
+            storeWinnerScore(storeAndroidScore, scoreComputer);
+            storeWinnerScore(storeMeScore, scoreMe);
+            startNewGame();
         }
         return false;
     }
@@ -153,14 +146,14 @@ public class GameActivity extends BaseFontActivity {
     }
 
     private void displayScore() {
-        tvScoreComputer.setText(String.valueOf(scoreComputer));
-        tvScoreMe.setText(String.valueOf(scoreMe));
+        tvDisplayScoreAndroid.setText(String.valueOf(scoreComputer));
+        tvDisplayScoreMe.setText(String.valueOf(scoreMe));
     }
 
     //Start a new Game
     private void startNewGame() {
         int k;
-        game.clearBoard();
+        gameEngine.clearBoard();
         for (k = 0; k < numberOfButton; k++) {
             button[k].setText(" ");
             button[k].setEnabled(true);
@@ -180,41 +173,41 @@ public class GameActivity extends BaseFontActivity {
         public void onClick(View v) {
             button[mePosition].setText("x");
             button[mePosition].setTextColor(getResources().getColor(R.color.black));
-            game.storePlayerMove(mePosition, game.mePlayer());
+            gameEngine.storePlayerMove(mePosition, gameEngine.mePlayer());
             button[mePosition].setEnabled(false);
             disableButtons();
-            checkRunnableAdded = handler.postDelayed(displayAndroidMove, 1000);
+            checkRunnableAdded = mHandler.postDelayed(displayAndroidMove, 1000);
         }
     }
 
-    private Runnable displayAndroidMove = new Runnable() {
+    private final Runnable displayAndroidMove = new Runnable() {
         @Override
         public void run() {
             int checkWinner;
-            checkWinner = game.checkWinner();
-            if (checkWinner == game.noWinnerYet()) {
-                int androidPosition = game.findComputerMove();
+            checkWinner = gameEngine.checkWinner();
+            if (checkWinner == gameEngine.noWinnerYet()) {
+                int androidPosition = gameEngine.findComputerMove();
                 button[androidPosition].setText("o");
                 button[androidPosition].setTextColor(getResources().getColor(R.color.black));
-                checkWinner = game.checkWinner();
+                checkWinner = gameEngine.checkWinner();
             }
 
-            if (checkWinner == game.mePlayerWin()) {
+            if (checkWinner == gameEngine.mePlayerWin()) {
                 scoreMe = scoreMe + addAPoint;
-                tvScoreMe.setText(String.valueOf(scoreMe));
+                tvDisplayScoreMe.setText(String.valueOf(scoreMe));
                 storeWinnerScore(storeMeScore, scoreMe);
                 showGameOverDialog(R.string.meWinner);
-            } else if (checkWinner == game.computerPlayerWin()) {
+            } else if (checkWinner == gameEngine.computerPlayerWin()) {
                 scoreComputer = scoreComputer + addAPoint;
-                tvScoreComputer.setText(String.valueOf(scoreComputer));
+                tvDisplayScoreAndroid.setText(String.valueOf(scoreComputer));
                 storeWinnerScore(storeAndroidScore, scoreComputer);
                 showGameOverDialog(R.string.androidWinner);
-            } else if (checkWinner == game.thereIsTie()) {
+            } else if (checkWinner == gameEngine.thereIsTie()) {
                 showGameOverDialog(R.string.tiedGame);//Show Dialog
             } else {
-                enableButtons = game.getAllEntry();
+                int[] enableButtons = gameEngine.getAllEntry();
                 for (int k = 0; k < numberOfButton; k++) {
-                    if (enableButtons[k] == game.emptyBoard()) {
+                    if (enableButtons[k] == gameEngine.emptyBoard()) {
                         button[k].setEnabled(true);
                     }
                 }
@@ -270,7 +263,7 @@ public class GameActivity extends BaseFontActivity {
 
     public void newGame(View v) {
         if (checkRunnableAdded) {
-            handler.removeCallbacks(displayAndroidMove);//Stop postDelay
+            mHandler.removeCallbacks(displayAndroidMove);//Stop postDelay
             checkRunnableAdded = false;
         }
         startNewGame();
