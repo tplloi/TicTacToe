@@ -16,4 +16,7 @@
     <string name="instructionTwo">Computer is the O\'s.</string>
     <string name="instructionThree">Place your X\'s on the squares by clicking them.</string>
     <string name="instructionFour"> The first player to get three X\'s or O\'s in a row (horizontal,vertical, or diagonal) wins.</string>
+    <string name="new_game">New Game</string>
+    <string name="rate">Rate</string>
+    <string name="more_games">More Games</string>
 </resources>

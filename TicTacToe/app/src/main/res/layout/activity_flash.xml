@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="tictactoe.activity.FlashActivity">
+    android:background="?attr/themeBackgroundColor">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/iv"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Tic Tac Toe\nSuper Hard"
-        android:textColor="@color/white"
+        android:text="@string/app_name"
+        android:textColor="?attr/themeTextColor"
         android:textSize="@dimen/txt_35"
         android:textStyle="bold" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv"
         android:layout_width="@dimen/w_120"
         android:layout_height="@dimen/w_120"
@@ -41,35 +39,38 @@
             android:background="@drawable/bt_primary"
             android:paddingStart="@dimen/padding_45"
             android:paddingEnd="@dimen/padding_45"
-            android:text="New Game"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_18"
+            android:text="@string/new_game"
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextColor"
+            android:textSize="@dimen/txt_large"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_medium"
             android:background="@drawable/bt_primary"
             android:paddingStart="@dimen/padding_45"
             android:paddingEnd="@dimen/padding_45"
-            android:text="Rate"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_18"
+            android:text="@string/rate"
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextColor"
+            android:textSize="@dimen/txt_large"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_medium"
             android:background="@drawable/bt_primary"
             android:paddingStart="@dimen/padding_45"
             android:paddingEnd="@dimen/padding_45"
-            android:text="More Games"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_18"
+            android:text="@string/more_games"
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextColor"
+            android:textSize="@dimen/txt_large"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

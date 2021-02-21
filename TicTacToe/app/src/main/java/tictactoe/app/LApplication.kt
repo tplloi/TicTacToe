@@ -7,6 +7,7 @@ import com.data.ActivityData
 import com.data.AdmobData
 import tictactoe.R
 
+//TODO setting darkmode
 //TODO theme
 //TODO admod
 class LApplication : BaseApplication() {
