@@ -9,7 +9,6 @@ import tictactoe.R
 
 //TODO theme
 //TODO admod
-//TODO icon launcher
 class LApplication : BaseApplication() {
 
     override fun onCreate() {

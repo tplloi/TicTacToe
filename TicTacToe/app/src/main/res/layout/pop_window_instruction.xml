@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/logohelp" />
+        android:src="@drawable/iv_help" />
 
     <TextView
         android:layout_width="wrap_content"
