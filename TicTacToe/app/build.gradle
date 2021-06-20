@@ -10,8 +10,8 @@ android {
         applicationId "com.loitp.tictactoe"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
         multiDexEnabled true
 
         renderscriptTargetApi 19
@@ -56,5 +56,5 @@ android {
 }
 
 dependencies {
-    api 'com.github.tplloi:basemaster:4.4.49'
+    api 'com.github.tplloi:basemaster:4.4.57'
 }
